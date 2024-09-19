@@ -1,3 +1,6 @@
+import time
+import random
+
 def native_search(l,target):
     for i in range(len(l)):
         if l[i] == target:
@@ -28,9 +31,22 @@ if __name__=='__main__':
     # print(native_search(l, target))
     # print(binary_search(l, target))
 
-    length - 10000
+    length = 10000
     sorted_list = set()
     while len(sorted_list) < length:
         sorted_list.add(random.randint(-3*length, 3*length))
     sorted_list = sorted(list(sorted_list))
+
+    start = time.time()
+    for target in sorted_list:
+        native_search(sorted_list, target)
+    end = time.time()
+    print("Native search time:", (end - start)/ length, "seconds")
+
+    start = time.time()
+    for target in sorted_list:
+        binary_search(sorted_list, target)
+    end = time.time()
+    print("Binary search time:", (end - start)/ length, "seconds")
+
 
